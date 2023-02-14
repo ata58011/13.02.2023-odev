@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- Axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <label for="">Company Name:</label>
+    <input type="text" id="companyName" />
+
+    <br />
+    <br />
+    <label for="">Contact Name:</label>
+
+    <input type="text" id="contactName" />
+
+    <br /><br />
+    <label for="">Contact Title</label>
+    <input type="text" id="contactTitle" />
+    <br /><br />
+    <label for="">City</label>
+    <input type="text" id="city" />
+
+    <div><button onclick="add()">Add</button></div>
+  </body>
+
+  <script>
+    function add() {
+      let companyName = document.getElementById("companyName").value;
+
+      let contactName = document.getElementById("contactName").value;
+
+      let contactTitle = document.getElementById("contactTitle").value;
+
+      let city = document.getElementById("city").value;
+
+      let newCategory = {
+        companyName: companyName,
+        contactName: contactName,
+        contactTitle: contactTitle,
+        adress: {
+          city: city,
+        },
+      };
+
+      axios
+        .post("https://northwind.vercel.app/api/suppliers", newCategory)
+        .then((res) => {
+          console.log("Response", res);
+          alert("Success!");
+        })
+        .catch((err) => {
+          console.log("error", err);
+        });
+    }
+  </script>
+</html>

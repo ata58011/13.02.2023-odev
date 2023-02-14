@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <!-- Axios CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <form action="">
+      <label for="">Id Number:</label>
+
+      <input type="text" id="numberOfId" />
+
+      <input onclick="delition()" type="button" value="Delete " />
+    </form>
+  </body>
+  <script>
+    function delition() {
+      let id = document.getElementById("numberOfId").value;
+
+      axios
+        .delete("https://northwind.vercel.app/api/suppliers/" + id)
+        .then((res) => {
+          alert("Success! " + id);
+        })
+        .catch((err) => {
+          alert("Error");
+        });
+    }
+  </script>
+</html>
